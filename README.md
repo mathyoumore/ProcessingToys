@@ -10,7 +10,7 @@ Open source and small programs for learning and practicing [Processing.](https:/
 ## Recommended (for Mac OS and Linux)
 1. Do the _How To_ section first
 2. Download [Atom](https://atom.io/)
-3. Download the [Processing Package](https://atom.io/packages/processing) for Atom by @bleikamp  
+3. Download the [Processing Package](https://atom.io/packages/processing) for Atom by [@bleikamp](https://github.com/bleikamp)  
     - You can also install it by going into Atom's settings, clicking install, and searching "Processing." It's the one with all the downloads.
 4. Follow the instructions (you should have processing-java installed afterwards)
 4. (Optional) Download [Processing Syntax Highlighting](https://atom.io/packages/processing-language)
