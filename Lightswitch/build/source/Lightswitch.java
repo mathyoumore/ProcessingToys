@@ -1,23 +1,39 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Lightswitch extends PApplet {
+
 WireManager wire_manager;
 Battery battery;
-void setup() {
-  size(500,500);
+public void setup() {
+  
   wire_manager = new WireManager();
   battery = new Battery(300,300);
   rectMode(CENTER);
 }
 
-void draw() {
+public void draw() {
   background(200);
   wire_manager.draw();
   battery.draw();
 }
 
-void mouseClicked() {
+public void mouseClicked() {
   wire_manager.handleClick();
 }
 
-void keyPressed()
+public void keyPressed()
 {
   if (key == 'r'){
     wire_manager.resetWires();
@@ -33,11 +49,11 @@ class Conductor {
 
     }
 
-    void toggle_active() {
+    public void toggle_active() {
 
     }
 
-    void update() {
+    public void update() {
       if (live)
       {
         fill(255,255,0);
@@ -47,7 +63,7 @@ class Conductor {
       }
     }
 
-    void activated() {
+    public void activated() {
 
     }
 }
@@ -66,7 +82,7 @@ class Battery {
 
   public void draw()
   {
-    color fill = g.fillColor;
+    int fill = g.fillColor;
     fill(0);
     rect(centerX, centerY, 30,50);
     rect(centerX, centerY-10, 10, 50);
@@ -89,7 +105,7 @@ class BatteryPole extends Conductor {
     live = true;
   }
    public void draw() {
-     color s = g.strokeColor;
+     int s = g.strokeColor;
      noStroke();
      update();
      rect(centerX, centerY, radiusX, radiusY);
@@ -166,16 +182,19 @@ class Wire {
       endingY = y;
   }
 
-  public void update()
-  {
-    if (updateLiveStatus(startingX, startingY) || updateLiveStatus(endingX,endingY)) {
-      
-    }
-  }
-
   public void draw()
   {
     line(startingX,startingY,endingX,endingY);
   }
 
+}
+  public void settings() {  size(500,500); }
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Lightswitch" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
